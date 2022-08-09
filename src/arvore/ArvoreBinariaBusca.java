@@ -77,6 +77,33 @@ public class ArvoreBinariaBusca {
         System.out.print(raiz.dado + " ");
     }
 
+    public boolean contains(int dado) {
+        if (this.raiz == null)
+            return false;
+        else
+            return contains(dado, this.raiz);
+    }
+
+    public boolean contains(int dado, No raiz) {
+        if (this.raiz.dado == dado) {
+            return true;
+        } else {
+            if (dado < raiz.dado) {
+                if (raiz.esquerdo == null)
+                    return false;
+                else
+                    return contains(dado, raiz.esquerdo);
+
+            } else if (dado > raiz.dado) {
+                if (raiz.direito == null)
+                    return false;
+                else
+                    return contains(dado, raiz.direito);
+            }
+
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
         ArvoreBinariaBusca a = new ArvoreBinariaBusca();
